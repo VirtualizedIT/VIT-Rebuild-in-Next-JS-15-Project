@@ -1,0 +1,307 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Base element styling */
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-poppins), system-ui, sans-serif;
+  }
+
+  /* Common color variables shared between all themes */
+  :root {
+    /* Brand colors */
+    --primary: 15 100% 60%; /* #FF6633 - Brand color */
+    --primary-foreground: 0 0% 0%; /* Black text for better accessibility */
+
+    --accent: 15 70% 47%; /* #D14B20 - Accessibility-safe brand color */
+    --accent-foreground: 0 0% 100%; /* White text on accent */
+
+    --secondary-foreground: 15 100% 60%;
+
+    /* Feedback colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    /* UI elements */
+    --ring: 15 100% 60%;
+    --radius: 0.5rem;
+
+    /* Dark theme default variables */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 96%;
+    --popover-foreground: 0 0% 4%;
+
+    --secondary: 0 0% 0%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 87%;
+
+    --border: 0 0% 40%;
+    --input: 0 0% 90%;
+
+    /* Text shadow variables */
+    --shadow-sm: 0px 0px 1px rgba(0, 0, 0, 0.5);
+    --shadow-base: 0px 0px 1px #000, 0px 0px 1px #000;
+    --shadow-lg: 0px 0px 2px #000, 0px 0px 1px #000;
+
+    /* CRM module colors */
+    --crm-new: 210 100% 60%;
+    --crm-qualified: 270 100% 60%;
+    --crm-proposal: 35 100% 50%;
+    --crm-won: 142 76% 36%;
+    --crm-lost: 0 84% 60%;
+
+    /* LMS module colors */
+    --lms-draft: 220 13% 91%;
+    --lms-published: 142 76% 36%;
+    --lms-archived: 35 100% 50%;
+
+    /* Community module colors */
+    --community-question: 210 100% 60%;
+    --community-discussion: 270 100% 60%;
+    --community-announcement: 35 100% 50%;
+    --community-resource: 142 76% 36%;
+  }
+
+  /* Dark theme - inherits from root */
+  .dark {
+    /* Only override values that differ from root */
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 60%;
+
+    --border: 0 0% 60%;
+  }
+
+  /* Light theme */
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 96%;
+
+    --secondary: 0 0% 0%;
+
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 20%;
+
+    --border: 0 0% 40%;
+    --input: 0 0% 10%;
+  }
+}
+
+/* Container width is now applied at the root layout level */
+@layer components {
+  .container {
+    @apply mx-auto w-full;
+    max-width: 1200px;
+  }
+
+  /* Typography styles with Poppins */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-poppins), system-ui, sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  p {
+    font-family: var(--font-poppins), system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  /* CRM components */
+  .deal-card {
+    @apply rounded-md border p-4 transition-all hover:shadow-md;
+  }
+
+  .deal-new {
+    @apply bg-[hsl(var(--crm-new)/0.1)] border-[hsl(var(--crm-new)/0.2)];
+  }
+
+  .deal-qualified {
+    @apply bg-[hsl(var(--crm-qualified)/0.1)] border-[hsl(var(--crm-qualified)/0.2)];
+  }
+
+  .deal-proposal {
+    @apply bg-[hsl(var(--crm-proposal)/0.1)] border-[hsl(var(--crm-proposal)/0.2)];
+  }
+
+  .deal-won {
+    @apply bg-[hsl(var(--crm-won)/0.1)] border-[hsl(var(--crm-won)/0.2)];
+  }
+
+  .deal-lost {
+    @apply bg-[hsl(var(--crm-lost)/0.1)] border-[hsl(var(--crm-lost)/0.2)];
+  }
+
+  /* LMS components */
+  .course-card {
+    @apply rounded-md border p-4 transition-all hover:shadow-md;
+  }
+
+  .course-draft {
+    @apply bg-[hsl(var(--lms-draft)/0.1)] border-[hsl(var(--lms-draft)/0.2)];
+  }
+
+  .course-published {
+    @apply bg-[hsl(var(--lms-published)/0.1)] border-[hsl(var(--lms-published)/0.2)];
+  }
+
+  .course-archived {
+    @apply bg-[hsl(var(--lms-archived)/0.1)] border-[hsl(var(--lms-archived)/0.2)];
+  }
+
+  /* Community components */
+  .post-card {
+    @apply rounded-md border p-4 transition-all hover:shadow-md;
+  }
+
+  .post-question {
+    @apply border-l-4 border-[hsl(var(--community-question))];
+  }
+
+  .post-discussion {
+    @apply border-l-4 border-[hsl(var(--community-discussion))];
+  }
+
+  .post-announcement {
+    @apply border-l-4 border-[hsl(var(--community-announcement))];
+  }
+
+  .post-resource {
+    @apply border-l-4 border-[hsl(var(--community-resource))];
+  }
+}
+
+@layer utilities {
+  /* Text shadow utilities for accessibility on colored backgrounds */
+  .text-shadow-sm {
+    text-shadow: var(--shadow-sm);
+  }
+
+  .text-shadow {
+    text-shadow: var(--shadow-base);
+  }
+
+  .text-shadow-lg {
+    text-shadow: var(--shadow-lg);
+  }
+}
+
+/* Adjustments for smaller screens and mobile devices */
+@media (max-width: 768px), (orientation: portrait) and (max-width: 640px) {
+  body:has(.cl-userButtonTrigger) {
+    padding-top: 48px; /* Ensure enough space on smaller screens and mobile */
+  }
+}
+
+/* Termageddon Policy CSS */
+#policy {
+  font-family: "Poppins", system-ui;
+}
+
+#policy h2 {
+  color: hsl(var(--accent));
+  font-weight: bold;
+  margin-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.dark #policy h2 {
+  color: hsl(var(--primary));
+}
+
+#policy h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#policy h4,
+#policy h5 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#policy p {
+  font-size: 14px;
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#policy .accordion-heading {
+  font-size: 16px;
+}
+
+#policy .accordion-section-content {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#policy table {
+  border: 1px solid hsl(var(--border));
+  vertical-align: bottom;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#policy ul,
+#policy li {
+  font-size: 14px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#policy a {
+  color: hsl(var(--accent));
+}
+
+.dark #policy a {
+  color: hsl(var(--primary));
+}
